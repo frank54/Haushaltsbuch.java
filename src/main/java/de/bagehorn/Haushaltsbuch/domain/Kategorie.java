@@ -2,6 +2,7 @@ package de.bagehorn.Haushaltsbuch.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -13,7 +14,8 @@ public class Kategorie {
     private Long id;
     private String typ;
     private String beschreibung;
-    private Set<Buchung> buchungen;
+    @OneToMany(mappedBy = "kategorie")
+    private Set<Buchung> buchungen = new HashSet<>();
 
     public Set<Buchung> getBuchungen() {
         return buchungen;

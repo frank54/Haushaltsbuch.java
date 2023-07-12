@@ -13,7 +13,6 @@ public class Buchung {
     private String beschreibung;
     private Float betrag;
     @ManyToOne
-    @JoinColumn(name = "kategorie_id")
     private Kategorie kategorie;
 
     public Kategorie getKategorie() {
