@@ -12,6 +12,8 @@ public class Kategorie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String name;
+    private Integer position;
     private String typ;
     private String beschreibung;
     @OneToMany(mappedBy = "kategorie")
@@ -32,6 +34,14 @@ public class Kategorie {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getName() { return name; }
+
+    public void setName(String name) { this.name = name; }
+
+    public Integer getPosition() { return position; }
+
+    public void setPosition(Integer position) { this.position = position; }
 
     public String getTyp() {
         return typ;

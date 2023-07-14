@@ -1,0 +1,107 @@
+{
+    "1": {
+        "Beschreibung": "Franks Salär inklusive Bonus und anderer Sonderzahlungen",
+        "Name": "Frank",
+        "Typ": "Einnahmen"
+    },
+    "10": {
+        "Beschreibung": "Versicherungen (ohne Krankenkasse)",
+        "Name": "Versicherung",
+        "Typ": "Ausgaben"
+    },
+    "11": {
+        "Beschreibung": "Monatliche Summe für den persönlichen Bedarf",
+        "Name": "Apanage",
+        "Typ": "Ausgaben"
+    },
+    "12": {
+        "Beschreibung": "Benzin, Autowartung, Parkgebühren, Bahntickets, andere Kosten für Mobilität",
+        "Name": "Mobilität",
+        "Typ": "Ausgaben"
+    },
+    "13": {
+        "Beschreibung": "Arztrechnungen, Medikamente, Krankenkassen",
+        "Name": "Gesundheit",
+        "Typ": "Ausgaben"
+    },
+    "14": {
+        "Beschreibung": "Telefon, Internet, TV",
+        "Name": "Kommunikation",
+        "Typ": "Ausgaben"
+    },
+    "15": {
+        "Beschreibung": "Reisen, Ausflüge, Restaurantbesuche, Zeitungen",
+        "Name": "Unterhaltung / Erholung / Kultur",
+        "Typ": "Ausgaben"
+    },
+    "16": {
+        "Beschreibung": "Kurskosten, Lehrbücher, berufsbezogene Ausgaben",
+        "Name": "Ausbildung / Beruf",
+        "Typ": "Ausgaben"
+    },
+    "17": {
+        "Beschreibung": "Barbezüge am Automaten",
+        "Name": "Barbezug",
+        "Typ": "Ausgaben"
+    },
+    "18": {
+        "Beschreibung": "Überweisungen auf die Sparkonti, Negativbeträge sind Überweisungen vom Sparkonto",
+        "Name": "Sparen",
+        "Typ": "Ausgaben"
+    },
+    "19": {
+        "Beschreibung": "Zuwendungen an gemeinnützige Institutionen und Vereine",
+        "Name": "Spenden",
+        "Typ": "Ausgaben"
+    },
+    "2": {
+        "Beschreibung": "Martinas Salär inklusive Bonus und anderer Sonderzahlungen",
+        "Name": "Martina",
+        "Typ": "Einnahmen"
+    },
+    "20": {
+        "Beschreibung": "Ausgaben im Rahmen des Hausbaus und Folgekosten",
+        "Name": "Bauen",
+        "Typ": "Ausgaben"
+    },
+    "21": {
+        "Beschreibung": "Andere Ausgaben, z.B. Geschenke",
+        "Name": "Anderes",
+        "Typ": "Ausgaben"
+    },
+    "3": {
+        "Beschreibung": "Einnahmen, die keine Saläre sind, wie z.B. Steuerrückzahlungen oder Geschenke",
+        "Name": "Sondereinnahmen",
+        "Typ": "Einnahmen"
+    },
+    "4": {
+        "Beschreibung": "Rückstellungen für Steuerzahlungen",
+        "Name": "Steuer",
+        "Typ": "Ausgaben"
+    },
+    "5": {
+        "Beschreibung": "Jährliche gebundene (Säule 3a) und ungebundene (Säule 3b) Vorsorge",
+        "Name": "Vorsorge",
+        "Typ": "Ausgaben"
+    },
+    "6": {
+        "Beschreibung": "Hypothekarzinsen, Unterhaltskosten z.B. Strom, Aufwendungen für den Garten",
+        "Name": "Wohnen / Haus / Garten",
+        "Typ": "Ausgaben"
+    },
+    "7": {
+        "Beschreibung": "Aufwendungen für nicht-Lebensmittel, z.B. Reinigungsmittel, Möbel, Lampen",
+        "Name": "Haushalt",
+        "Typ": "Ausgaben"
+    },
+    "8": {
+        "Beschreibung": "Lebensmittel und Waren des täglichen Bedarfs",
+        "Name": "Nahrung / Genuss",
+        "Typ": "Ausgaben"
+    },
+    "9": {
+        "Beschreibung": "Kinderbetreuung, Kinderkleidung und andere Kind-bezogene Ausgaben",
+        "Name": "Kind",
+        "Typ": "Ausgaben"
+    }
+}
