@@ -3,16 +3,14 @@ package de.bagehorn.Haushaltsbuch.services;
 import de.bagehorn.Haushaltsbuch.domain.Kategorie;
 import de.bagehorn.Haushaltsbuch.repositories.KategorieRepository;
 
-import java.util.function.Predicate;
-
 public class KategorieServiceImpl implements KategorieService {
 
-    KategorieRepository kategorieRepository;
-    FilterService<Kategorie> filterService;
+    private final KategorieRepository kategorieRepository;
+    private final FilterService<Kategorie> filterService;
 
-    public KategorieServiceImpl(KategorieRepository kategorieRepository) {
+    public KategorieServiceImpl(KategorieRepository kategorieRepository, FilterService<Kategorie> filterService) {
         this.kategorieRepository = kategorieRepository;
-        this.filterService = new FilterServiceImpl<>();
+        this.filterService = filterService;
     }
 
     @Override

@@ -3,22 +3,19 @@ package de.bagehorn.Haushaltsbuch.services;
 import de.bagehorn.Haushaltsbuch.domain.Buchung;
 import de.bagehorn.Haushaltsbuch.domain.Kategorie;
 import de.bagehorn.Haushaltsbuch.repositories.BuchungRepository;
-import de.bagehorn.Haushaltsbuch.repositories.KategorieRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BuchungServiceImpl implements BuchungService {
 
-    BuchungRepository buchungRepository;
-    KategorieRepository kategorieRepository;
-    KategorieService kategorieService;
-    FilterService<Buchung> filterService;
+    private final BuchungRepository buchungRepository;
+    private final KategorieService kategorieService;
+    private final FilterService<Buchung> filterService;
 
-    public BuchungServiceImpl(BuchungRepository buchungRepository, KategorieRepository kategorieRepository) {
+    public BuchungServiceImpl(BuchungRepository buchungRepository, KategorieService kategorieService, FilterService<Buchung> filterService) {
         this.buchungRepository = buchungRepository;
-        this.kategorieRepository = kategorieRepository;
-        this.kategorieService = new KategorieServiceImpl(this.kategorieRepository);
-        this.filterService = new FilterServiceImpl<>();
+        this.kategorieService = kategorieService;
+        this.filterService = filterService;
     }
 
     @Override
