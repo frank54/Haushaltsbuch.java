@@ -6,12 +6,9 @@ import de.bagehorn.Haushaltsbuch.repositories.BuchungRepository;
 import de.bagehorn.Haushaltsbuch.repositories.KategorieRepository;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import de.bagehorn.Haushaltsbuch.services.BuchungService;
-import de.bagehorn.Haushaltsbuch.services.BuchungServiceImpl;
 import de.bagehorn.Haushaltsbuch.services.KategorieService;
-import de.bagehorn.Haushaltsbuch.services.KategorieServiceImpl;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.springframework.boot.CommandLineRunner;
@@ -21,13 +18,11 @@ import org.springframework.stereotype.Component;
 public class BootstrapData implements CommandLineRunner {
     private final BuchungRepository buchungRepository;
     private final KategorieRepository kategorieRepository;
-    private final BuchungService buchungService;
     private final KategorieService kategorieService;
 
-    public BootstrapData(BuchungRepository buchungRepository, KategorieRepository kategorieRepository, BuchungService buchungService, KategorieService kategorieService) {
+    public BootstrapData(BuchungRepository buchungRepository, KategorieRepository kategorieRepository, KategorieService kategorieService) {
         this.buchungRepository = buchungRepository;
         this.kategorieRepository = kategorieRepository;
-        this.buchungService = buchungService;
         this.kategorieService = kategorieService;
     }
 
