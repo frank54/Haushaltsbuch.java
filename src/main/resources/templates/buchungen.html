@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Haushaltsbuch</title>
+</head>
+<body>
+<h1>Buchungen</h1>
+
+<table>
+    <tr>
+        <th>Datum</th>
+        <th>Beschreibung</th>
+        <th>Betrag</th>
+        <th>Kategorie</th>
+        <th>Typ</th>
+    </tr>
+    <tr th:each="buchung : ${buchungen}">
+        <td th:text="${buchung.datum}">1970-04-05</td>
+        <td th:text="${buchung.beschreibung}">Zahlung</td>
+        <td th:text="${buchung.betrag}">9.99</td>
+        <td th:text="${buchung.kategorie.name}">Anderes</td>
+        <td th:text="${buchung.kategorie.typ}">Ausgaben</td>
+    </tr>
+</table>
+
+</body>
+</html>
