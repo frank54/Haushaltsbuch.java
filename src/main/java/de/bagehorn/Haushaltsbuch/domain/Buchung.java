@@ -2,6 +2,7 @@ package de.bagehorn.Haushaltsbuch.domain;
 
 import jakarta.persistence.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -41,16 +42,17 @@ public class Buchung {
         this.beschreibung = beschreibung;
     }
 
-    public float getBetrag() {
-        return betrag;
+    public String getBetrag() {
+        return String.format("%.2f SFr", betrag);
     }
 
     public void setBetrag(float betrag) {
         this.betrag = betrag;
     }
 
-    public Date getDatum() {
-        return datum;
+    public String getDatum() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        return sdf.format(datum);
     }
 
     public void setDatum(Date datum) {
