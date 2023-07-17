@@ -33,7 +33,8 @@ public class BootstrapData implements CommandLineRunner {
         InputStream inputFile = BootstrapData.class.getResourceAsStream("/kategorien.json");
         JSONTokener tokener = new JSONTokener(inputFile);
         JSONObject kategorien = new JSONObject(tokener);
-        for (String key : kategorien.keySet()) {
+        for (int i = 1; i <= 21; i++) {
+            String key = String.valueOf(i);
             JSONObject kategorie = kategorien.getJSONObject(key);
             Kategorie neueKategorie = new Kategorie();
             neueKategorie.setPosition(Integer.parseInt(key));
@@ -54,7 +55,7 @@ public class BootstrapData implements CommandLineRunner {
         buchung.setBeschreibung("Hypothek");
         buchung.setBetrag(900);
         buchung.setDatum(new SimpleDateFormat("yyyy-MM-dd").parse("2023-07-02"));
-        buchung.setKategorie(kategorieService.findByName(""));
+        buchung.setKategorie(kategorieService.findByName("Wohnen / Haus / Garten"));
         buchungRepository.save(buchung);
 
         System.out.println("Anzahl Kategorien: " + kategorieRepository.count());
