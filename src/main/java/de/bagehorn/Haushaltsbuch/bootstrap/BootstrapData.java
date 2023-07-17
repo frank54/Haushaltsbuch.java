@@ -7,7 +7,6 @@ import de.bagehorn.Haushaltsbuch.repositories.KategorieRepository;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 
-import de.bagehorn.Haushaltsbuch.services.BuchungService;
 import de.bagehorn.Haushaltsbuch.services.KategorieService;
 import org.json.JSONObject;
 import org.json.JSONTokener;
