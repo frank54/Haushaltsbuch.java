@@ -2,7 +2,9 @@ package de.bagehorn.Haushaltsbuch.services;
 
 import de.bagehorn.Haushaltsbuch.domain.Kategorie;
 import de.bagehorn.Haushaltsbuch.repositories.KategorieRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class KategorieServiceImpl implements KategorieService {
 
     private final KategorieRepository kategorieRepository;
@@ -19,7 +21,7 @@ public class KategorieServiceImpl implements KategorieService {
     @Override
     public Kategorie findByName(String name)
     {
-        Iterable<Kategorie> gefiltert = filterService.select(findAll(), k -> k.getName().equals(name));
+        Iterable<Kategorie> gefiltert = filterService.select(findAll(), k -> !k.getName().equals(name));
         if (gefiltert.iterator().hasNext()) {
             return gefiltert.iterator().next();
         }
