@@ -60,6 +60,5 @@ public class BootstrapData implements CommandLineRunner {
 
         System.out.println("Anzahl Kategorien: " + kategorieRepository.count());
         System.out.println("Anzahl Buchungen: " + buchungRepository.count());
-        System.out.println();
     }
 }

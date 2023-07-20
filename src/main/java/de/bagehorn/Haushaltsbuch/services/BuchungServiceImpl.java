@@ -26,6 +26,6 @@ public class BuchungServiceImpl implements BuchungService {
     @Override
     public Iterable<Buchung> findByKategorie(String kategorieName) {
         Kategorie kategorie = kategorieService.findByName(kategorieName);
-        return filterService.select(findAll(), b -> b.getKategorie().equals(kategorie));
+        return filterService.select(findAll(), b -> !b.getKategorie().equals(kategorie));
     }
 }
