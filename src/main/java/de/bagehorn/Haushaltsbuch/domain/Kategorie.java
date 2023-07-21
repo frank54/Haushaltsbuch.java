@@ -13,7 +13,7 @@ public class Kategorie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private Integer position;
+    private int position;
     private String typ;
     private String beschreibung;
     @OneToMany(mappedBy = "kategorie")
@@ -39,9 +39,9 @@ public class Kategorie {
 
     public void setName(String name) { this.name = name; }
 
-    public Integer getPosition() { return position; }
+    public int getPosition() { return position; }
 
-    public void setPosition(Integer position) { this.position = position; }
+    public void setPosition(int position) { this.position = position; }
 
     public String getTyp() {
         return typ;
@@ -72,5 +72,15 @@ public class Kategorie {
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Kategorie{" +
+                "Name='" + name + '\'' +
+                ", Position=" + position +
+                ", Typ='" + typ + '\'' +
+                ", Beschreibung='" + beschreibung + '\'' +
+                '}';
     }
 }

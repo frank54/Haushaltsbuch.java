@@ -2,6 +2,8 @@ package de.bagehorn.Haushaltsbuch.domain;
 
 import jakarta.persistence.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -11,7 +13,8 @@ public class Buchung {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String beschreibung;
-    private Float betrag;
+    private float betrag;
+    private Date datum;
     @ManyToOne
     private Kategorie kategorie;
 
@@ -39,12 +42,21 @@ public class Buchung {
         this.beschreibung = beschreibung;
     }
 
-    public Float getBetrag() {
-        return betrag;
+    public String getBetrag() {
+        return String.format("%.2f SFr", betrag);
     }
 
-    public void setBetrag(Float betrag) {
+    public void setBetrag(float betrag) {
         this.betrag = betrag;
+    }
+
+    public String getDatum() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        return sdf.format(datum);
+    }
+
+    public void setDatum(Date datum) {
+        this.datum = datum;
     }
 
     @Override
