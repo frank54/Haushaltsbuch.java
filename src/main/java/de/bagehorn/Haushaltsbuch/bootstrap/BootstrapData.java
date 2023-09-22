@@ -2,28 +2,25 @@ package de.bagehorn.Haushaltsbuch.bootstrap;
 
 import de.bagehorn.Haushaltsbuch.domain.Buchung;
 import de.bagehorn.Haushaltsbuch.domain.Kategorie;
+import de.bagehorn.Haushaltsbuch.exceptions.NotFoundException;
 import de.bagehorn.Haushaltsbuch.repositories.BuchungRepository;
 import de.bagehorn.Haushaltsbuch.repositories.KategorieRepository;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 
 import de.bagehorn.Haushaltsbuch.services.KategorieService;
+import lombok.AllArgsConstructor;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+@AllArgsConstructor
 @Component
 public class BootstrapData implements CommandLineRunner {
     private final BuchungRepository buchungRepository;
     private final KategorieRepository kategorieRepository;
     private final KategorieService kategorieService;
-
-    public BootstrapData(BuchungRepository buchungRepository, KategorieRepository kategorieRepository, KategorieService kategorieService) {
-        this.buchungRepository = buchungRepository;
-        this.kategorieRepository = kategorieRepository;
-        this.kategorieService = kategorieService;
-    }
 
     @Override
     public void run(String... args) throws Exception {
@@ -33,29 +30,34 @@ public class BootstrapData implements CommandLineRunner {
         InputStream inputFile = BootstrapData.class.getResourceAsStream("/kategorien.json");
         JSONTokener tokener = new JSONTokener(inputFile);
         JSONObject kategorien = new JSONObject(tokener);
-        for (int i = 1; i <= 21; i++) {
-            String key = String.valueOf(i);
+        for (int index = 1; index <= 21; index++) {
+            String key = String.valueOf(index);
             JSONObject kategorie = kategorien.getJSONObject(key);
-            Kategorie neueKategorie = new Kategorie();
-            neueKategorie.setPosition(Integer.parseInt(key));
-            neueKategorie.setName(kategorie.getString("Name"));
-            neueKategorie.setBeschreibung(kategorie.getString("Beschreibung"));
-            neueKategorie.setTyp(kategorie.getString("Typ"));
+            Kategorie neueKategorie = Kategorie.builder()
+                    .position(index)
+                    .name(kategorie.getString("Name"))
+                    .beschreibung(kategorie.getString("Beschreibung"))
+                    .typ(kategorie.getString("Typ"))
+                    .build();
             kategorieRepository.save(neueKategorie);
         }
 
         // Füge Buchungen dazu
-        Buchung buchung = new Buchung();
-        buchung.setBeschreibung("IBM Salär");
-        buchung.setBetrag(15000);
-        buchung.setDatum(new SimpleDateFormat("yyyy-MM-dd").parse("2023-07-25"));
-        buchung.setKategorie(kategorieService.findByName("Frank"));
+        Kategorie kategorie = kategorieService.findByName("Frank").orElseThrow(NotFoundException::new);
+        Buchung buchung = Buchung.builder()
+                .beschreibung("IBM Salär")
+                .betrag(15000)
+                .datum(new SimpleDateFormat("yyyy-MM-dd").parse("2023-07-25"))
+                .kategorie(kategorie)
+                .build();
         buchungRepository.save(buchung);
-        buchung = new Buchung();
-        buchung.setBeschreibung("Hypothek");
-        buchung.setBetrag(900);
-        buchung.setDatum(new SimpleDateFormat("yyyy-MM-dd").parse("2023-07-02"));
-        buchung.setKategorie(kategorieService.findByName("Wohnen / Haus / Garten"));
+        kategorie = kategorieService.findByName("Wohnen / Haus / Garten").orElseThrow(NotFoundException::new);
+        buchung = Buchung.builder()
+                .beschreibung("Hypothek")
+                .betrag(900)
+                .datum(new SimpleDateFormat("yyyy-MM-dd").parse("2023-07-02"))
+                .kategorie(kategorie)
+                .build();
         buchungRepository.save(buchung);
 
         System.out.println("Anzahl Kategorien: " + kategorieRepository.count());
