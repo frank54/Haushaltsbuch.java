@@ -4,9 +4,12 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import de.bagehorn.Haushaltsbuch.services.BuchungSerializer;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.id.UUIDGenerator;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.UUID;
 
 @Builder(toBuilder = true)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
@@ -19,9 +22,11 @@ import java.util.Date;
 public class Buchung {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", type = UUIDGenerator.class)
+    @Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false)
     @EqualsAndHashCode.Include
-    private Long id;
+    private UUID id;
     private String beschreibung;
     private float betrag;
     private Date datum;
