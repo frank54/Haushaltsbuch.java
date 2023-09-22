@@ -6,11 +6,8 @@ import de.bagehorn.Haushaltsbuch.domain.Buchung;
 import de.bagehorn.Haushaltsbuch.domain.Kategorie;
 import de.bagehorn.Haushaltsbuch.exceptions.NotFoundException;
 import de.bagehorn.Haushaltsbuch.services.BuchungService;
-import de.bagehorn.Haushaltsbuch.services.KategorieService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -18,10 +15,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -30,7 +23,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(BuchungController.class)
 public class BuchungControllerTest {
-    private static final Logger log = LoggerFactory.getLogger(BuchungControllerTest.class);
     @Autowired
     MockMvc mockmvc;
 
@@ -39,8 +31,6 @@ public class BuchungControllerTest {
 
     @MockBean
     BuchungService buchungService;
-    @MockBean
-    KategorieService kategorieService;
 
     private Kategorie testKat;
     private Buchung testBuchung;
@@ -54,7 +44,6 @@ public class BuchungControllerTest {
                 "\"kategorie\": " + objectMapper.writeValueAsString(testKat) + "}";
         testBuchung = objectMapper.readValue(testBuchungStr, Buchung.class);
         testBuchungen = new Buchung[]{testBuchung};
-//        log.info(objectMapper.writeValueAsString(testBuchung));
     }
 
     @Test

@@ -23,6 +23,7 @@ public class BuchungController {
 
     @GetMapping(value = "{kategorieName}")
     public List<Buchung> getBuchungenByKategorie(@PathVariable("kategorieName") String name) {
+        log.info("Aufruf der BuchungByKategorie Methode");
         List<Buchung> returnList = new ArrayList<>();
         buchungService.findByKategorie(name).forEach(returnList::add);
         return returnList;
@@ -35,6 +36,7 @@ public class BuchungController {
 //        return "buchungen";
 //    }
     public ResponseEntity<List<Buchung>> getBuchungen() {
+        log.info("Aufruf der AlleBuchungen Methode");
         List<Buchung> returnList = new ArrayList<>();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -44,6 +46,7 @@ public class BuchungController {
 
     @PostMapping
     public ResponseEntity<Buchung> addBuchung(@RequestBody Buchung buchung) {
+        log.info("Aufruf der NeueBuchung Methode");
         Buchung neueBuchung = buchungService.addBuchung(buchung);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location", "/api/v1/buchung/" + buchung.getId().toString());

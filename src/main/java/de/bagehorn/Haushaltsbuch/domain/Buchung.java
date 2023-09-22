@@ -5,8 +5,6 @@ import de.bagehorn.Haushaltsbuch.services.BuchungSerializer;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Builder(toBuilder = true)

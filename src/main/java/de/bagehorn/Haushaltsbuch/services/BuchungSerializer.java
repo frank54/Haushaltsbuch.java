@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 
 public class BuchungSerializer extends StdSerializer<Buchung> {
 
-    private static DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+    private static final DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 
     public BuchungSerializer() {
         super(Buchung.class);

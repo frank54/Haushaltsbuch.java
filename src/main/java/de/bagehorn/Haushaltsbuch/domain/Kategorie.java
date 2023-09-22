@@ -3,8 +3,6 @@ package de.bagehorn.Haushaltsbuch.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Builder(toBuilder = true)

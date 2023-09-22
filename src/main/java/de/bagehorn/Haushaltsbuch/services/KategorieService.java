@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface KategorieService {
 
-    public Iterable<Kategorie> findAll();
-    public Optional<Kategorie> findByName(String name);
+    Iterable<Kategorie> findAll();
+    Optional<Kategorie> findByName(String name);
 
 }
