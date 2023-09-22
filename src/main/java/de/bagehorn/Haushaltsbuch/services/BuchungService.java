@@ -7,4 +7,5 @@ public interface BuchungService {
     Iterable<Buchung> findAll();
     Iterable<Buchung> findByKategorie(String kategorieName);
 
+    Buchung addBuchung(Buchung neueBuchung);
 }
