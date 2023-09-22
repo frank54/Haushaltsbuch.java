@@ -1,6 +1,6 @@
 package de.bagehorn.Haushaltsbuch.controllers;
 
-import de.bagehorn.Haushaltsbuch.domain.Buchung;
+import de.bagehorn.Haushaltsbuch.entities.Buchung;
 import de.bagehorn.Haushaltsbuch.services.BuchungService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;

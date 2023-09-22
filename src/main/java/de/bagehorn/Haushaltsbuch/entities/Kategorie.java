@@ -1,8 +1,9 @@
-package de.bagehorn.Haushaltsbuch.domain;
+package de.bagehorn.Haushaltsbuch.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Builder(toBuilder = true)
@@ -24,5 +25,10 @@ public class Kategorie {
     private String beschreibung;
     @OneToMany(mappedBy = "kategorie")
     private Set<Buchung> buchungen;
+
+    @Version
+    private Integer version;
+    private LocalDateTime createDateTime;
+    private LocalDateTime updateDateTime;
 
 }

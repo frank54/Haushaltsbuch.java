@@ -2,8 +2,8 @@ package de.bagehorn.Haushaltsbuch.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.bagehorn.Haushaltsbuch.domain.Buchung;
-import de.bagehorn.Haushaltsbuch.domain.Kategorie;
+import de.bagehorn.Haushaltsbuch.entities.Buchung;
+import de.bagehorn.Haushaltsbuch.entities.Kategorie;
 import de.bagehorn.Haushaltsbuch.exceptions.NotFoundException;
 import de.bagehorn.Haushaltsbuch.services.BuchungService;
 import org.junit.jupiter.api.BeforeEach;

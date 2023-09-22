@@ -1,7 +1,7 @@
 package de.bagehorn.Haushaltsbuch.services;
 
-import de.bagehorn.Haushaltsbuch.domain.Buchung;
-import de.bagehorn.Haushaltsbuch.domain.Kategorie;
+import de.bagehorn.Haushaltsbuch.entities.Buchung;
+import de.bagehorn.Haushaltsbuch.entities.Kategorie;
 import de.bagehorn.Haushaltsbuch.exceptions.NotFoundException;
 import de.bagehorn.Haushaltsbuch.repositories.BuchungRepository;
 import lombok.AllArgsConstructor;

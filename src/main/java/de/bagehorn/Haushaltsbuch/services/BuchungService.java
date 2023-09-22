@@ -1,6 +1,6 @@
 package de.bagehorn.Haushaltsbuch.services;
 
-import de.bagehorn.Haushaltsbuch.domain.Buchung;
+import de.bagehorn.Haushaltsbuch.entities.Buchung;
 
 public interface BuchungService {
 

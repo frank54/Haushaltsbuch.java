@@ -1,6 +1,6 @@
 package de.bagehorn.Haushaltsbuch.services;
 
-import de.bagehorn.Haushaltsbuch.domain.Kategorie;
+import de.bagehorn.Haushaltsbuch.entities.Kategorie;
 import de.bagehorn.Haushaltsbuch.repositories.KategorieRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

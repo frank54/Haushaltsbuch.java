@@ -1,6 +1,6 @@
 package de.bagehorn.Haushaltsbuch.services;
 
-import de.bagehorn.Haushaltsbuch.domain.Kategorie;
+import de.bagehorn.Haushaltsbuch.entities.Kategorie;
 
 import java.util.Optional;
 

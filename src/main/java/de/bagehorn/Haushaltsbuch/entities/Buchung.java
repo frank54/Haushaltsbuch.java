@@ -1,16 +1,17 @@
-package de.bagehorn.Haushaltsbuch.domain;
+package de.bagehorn.Haushaltsbuch.entities;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import de.bagehorn.Haushaltsbuch.services.BuchungSerializer;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Builder(toBuilder = true)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
-@Getter(value = AccessLevel.PUBLIC)
+@Getter
 @Setter(value = AccessLevel.PACKAGE)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @JsonSerialize(using = BuchungSerializer.class)
@@ -26,4 +27,10 @@ public class Buchung {
     private Date datum;
     @ManyToOne
     private Kategorie kategorie;
+
+    @Version
+    private Integer version;
+    private LocalDateTime createDateTime;
+    private LocalDateTime updateDateTime;
+
 }
