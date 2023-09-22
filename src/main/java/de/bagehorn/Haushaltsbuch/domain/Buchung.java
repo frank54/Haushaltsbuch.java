@@ -1,76 +1,31 @@
 package de.bagehorn.Haushaltsbuch.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import de.bagehorn.Haushaltsbuch.services.BuchungSerializer;
 import jakarta.persistence.*;
+import lombok.*;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Objects;
 
+@Builder(toBuilder = true)
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
+@Getter(value = AccessLevel.PUBLIC)
+@Setter(value = AccessLevel.PACKAGE)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@JsonSerialize(using = BuchungSerializer.class)
 @Entity
 public class Buchung {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @EqualsAndHashCode.Include
     private Long id;
     private String beschreibung;
     private float betrag;
     private Date datum;
     @ManyToOne
     private Kategorie kategorie;
-
-    public Kategorie getKategorie() {
-        return kategorie;
-    }
-
-    public void setKategorie(Kategorie kategorie) {
-        this.kategorie = kategorie;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getBeschreibung() {
-        return beschreibung;
-    }
-
-    public void setBeschreibung(String beschreibung) {
-        this.beschreibung = beschreibung;
-    }
-
-    public String getBetrag() {
-        return String.format("%.2f SFr", betrag);
-    }
-
-    public void setBetrag(float betrag) {
-        this.betrag = betrag;
-    }
-
-    public String getDatum() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-        return sdf.format(datum);
-    }
-
-    public void setDatum(Date datum) {
-        this.datum = datum;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Buchung buchung = (Buchung) o;
-
-        return Objects.equals(id, buchung.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
-    }
 }
