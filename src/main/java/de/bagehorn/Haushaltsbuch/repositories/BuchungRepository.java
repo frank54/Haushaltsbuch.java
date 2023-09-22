@@ -1,7 +1,9 @@
 package de.bagehorn.Haushaltsbuch.repositories;
 
 import de.bagehorn.Haushaltsbuch.entities.Buchung;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BuchungRepository extends CrudRepository<Buchung, Long> {
+import java.util.UUID;
+
+public interface BuchungRepository extends JpaRepository<Buchung, UUID> {
 }
