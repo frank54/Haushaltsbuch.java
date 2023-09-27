@@ -5,7 +5,7 @@ import de.bagehorn.Haushaltsbuch.services.BuchungSerializer;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.id.UUIDGenerator;
+import org.hibernate.id.uuid.UuidGenerator;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -23,7 +23,7 @@ public class Buchung {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", type = UUIDGenerator.class)
+    @GenericGenerator(name = "UUID", type = UuidGenerator.class)
     @Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false)
     @EqualsAndHashCode.Include
     private UUID id;
