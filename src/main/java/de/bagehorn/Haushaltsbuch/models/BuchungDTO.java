@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.UUID;
 
 @Builder(toBuilder = true)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
@@ -15,7 +16,7 @@ import java.util.Date;
 public class BuchungDTO {
 
     @EqualsAndHashCode.Include
-    private Long id;
+    private UUID id;
     private String beschreibung;
     private float betrag;
     private Date datum;
