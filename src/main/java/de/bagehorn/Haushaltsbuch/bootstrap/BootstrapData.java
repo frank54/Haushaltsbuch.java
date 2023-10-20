@@ -1,5 +1,7 @@
 package de.bagehorn.Haushaltsbuch.bootstrap;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import de.bagehorn.Haushaltsbuch.entities.Buchung;
 import de.bagehorn.Haushaltsbuch.entities.Kategorie;
 import de.bagehorn.Haushaltsbuch.exceptions.NotFoundException;
@@ -7,11 +9,10 @@ import de.bagehorn.Haushaltsbuch.repositories.BuchungRepository;
 import de.bagehorn.Haushaltsbuch.repositories.KategorieRepository;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.Map;
 
 import de.bagehorn.Haushaltsbuch.services.KategorieService;
 import lombok.AllArgsConstructor;
-import org.json.JSONObject;
-import org.json.JSONTokener;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -28,16 +29,16 @@ public class BootstrapData implements CommandLineRunner {
 
         // Lese Kategorien aus JSON Datei
         InputStream inputFile = BootstrapData.class.getResourceAsStream("/kategorien.json");
-        JSONTokener tokener = new JSONTokener(inputFile);
-        JSONObject kategorien = new JSONObject(tokener);
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, Map<String, String>> kategorien = objectMapper.readValue(inputFile, new TypeReference<>(){});
         for (int index = 1; index <= 21; index++) {
             String key = String.valueOf(index);
-            JSONObject kategorie = kategorien.getJSONObject(key);
+            Map<String, String> kategorie = kategorien.get(key);
             Kategorie neueKategorie = Kategorie.builder()
                     .position(index)
-                    .name(kategorie.getString("Name"))
-                    .beschreibung(kategorie.getString("Beschreibung"))
-                    .typ(kategorie.getString("Typ"))
+                    .name(kategorie.get("Name"))
+                    .beschreibung(kategorie.get("Beschreibung"))
+                    .typ(kategorie.get("Typ"))
                     .build();
             kategorieRepository.save(neueKategorie);
         }
