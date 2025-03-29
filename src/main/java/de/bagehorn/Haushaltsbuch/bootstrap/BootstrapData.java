@@ -45,8 +45,8 @@ public class BootstrapData implements CommandLineRunner {
         // Füge Buchungen dazu
         Kategorie kategorie = kategorieService.findByName("Frank").orElseThrow(NotFoundException::new);
         Buchung buchung = Buchung.builder()
-                .beschreibung("IBM Salär")
-                .betrag(15000)
+                .beschreibung("Salär")
+                .betrag(5000)
                 .datum(new SimpleDateFormat("yyyy-MM-dd").parse("2023-07-25"))
                 .kategorie(kategorie)
                 .build();
@@ -54,7 +54,7 @@ public class BootstrapData implements CommandLineRunner {
         kategorie = kategorieService.findByName("Wohnen / Haus / Garten").orElseThrow(NotFoundException::new);
         buchung = Buchung.builder()
                 .beschreibung("Hypothek")
-                .betrag(900)
+                .betrag(500)
                 .datum(new SimpleDateFormat("yyyy-MM-dd").parse("2023-07-02"))
                 .kategorie(kategorie)
                 .build();
